@@ -5,16 +5,17 @@ import bodyParser from 'body-parser'
 import { connection} from './database'
 import router from './router'
 import config from './config'
+
 const app = express()
 connection()
 
 const server = http.createServer(app)
 
-app.use(bodyParser.urlencoded({
-    extended: false
-}))
-
 app.use(bodyParser.json())
+
+app.use(bodyParser.urlencoded({
+    extended: true
+}))
 
 app.use(cors())
 
